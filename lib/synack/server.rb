@@ -2,7 +2,7 @@ module Synack
 
   class Server
 
-    attr_accessor :host, :port, :socket
+    attr_reader :host, :port, :socket
 
     # Class methods ================================================================================
 
@@ -19,14 +19,18 @@ module Synack
     # Instance methods =============================================================================
 
     def initialize(args={})
-      self.host   = args[:host] || 'localhost'
-      self.port   = args[:port] || 131313
-      self.socket = TCPSocket.open(host, port)
+      @host   = args[:host] || 'localhost'
+      @port   = args[:port] || 131313
+      @socket = TCPSocket.open(host, port)
     end
 
     # FIXME scrub msg to avoid execution of arbitrary commands
+    def sanitize(message)
+      message
+    end
+
     def send(message)
-      system "/Applications/terminal-notifier.app/Contents/MacOS/terminal-notifier --message message"
+      system "/Applications/terminal-notifier.app/Contents/MacOS/terminal-notifier --message \"#{sanitize(message)}\""
     end
 
   end
