@@ -17,10 +17,10 @@ Jeweler::Tasks.new do |gem|
   gem.name = "synack"
   gem.homepage = "http://github.com/Bantik/synack"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{A Ruby server for terminal-notifier}
+  gem.description = %Q{A Ruby server for terminal-notifier}
   gem.email = "corey@idolhands.com"
-  gem.authors = ["Corey Ehmke"]
+  gem.authors = ["Corey Ehmke", "Max Thom Stahl"]
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
@@ -30,14 +30,6 @@ Rake::TestTask.new(:test) do |test|
   test.libs << 'lib' << 'test'
   test.pattern = 'test/**/test_*.rb'
   test.verbose = true
-end
-
-require 'rcov/rcovtask'
-Rcov::RcovTask.new do |test|
-  test.libs << 'test'
-  test.pattern = 'test/**/test_*.rb'
-  test.verbose = true
-  test.rcov_opts << '--exclude "gems/*"'
 end
 
 task :default => :test

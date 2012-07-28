@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby -wKU
+
+require 'synack'
+# require File.join(File.dirname(__FILE__), '..', 'lib', 'synack')
+
+host, port = ARGV.first.split(/:/)
+
+client = Synack::Client.new host: host, port: port
+
+while true
+  _input = STDIN.gets.chomp
+  client.send _input
+end
