@@ -24,9 +24,8 @@ module Synack
       @socket = TCPSocket.open(host, port)
     end
 
-    # FIXME scrub msg to avoid execution of arbitrary commands
     def sanitize(message)
-      message
+      message.gsub(/[^0-9A-z\.\-\']/, '_')
     end
 
     def send(message)
