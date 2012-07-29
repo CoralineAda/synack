@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby -wKU
+
+require 'synack'
+
+host, port = ARGV.first ? ARGV.first.split(/:/) : ["localhost", 11113]
+Synack::Server.start(host: host, port: port)
