@@ -9,16 +9,19 @@ options = Getopt::Long.getopts(
   ["--port", "-p"]
 )
 
-if optioons["server"]
+@host = options['host'] || 'localhost'
+@port = options['port'] || 11113
+
+if options["server"]
   Synack::Server.start(
-    host: options['host'] || 'localhost', 
-    port: options['port'] || 11113
+    host: @host, 
+    port: @port
   )
 else
   begin
     client = Synack::Client.new(
-      host: options['host'] || 'localhost', 
-      port: options['port'] || 11113
+      host: @host, 
+      port: @port
     )
 
     _input = STDIN.gets.chomp
