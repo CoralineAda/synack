@@ -34,7 +34,7 @@ module Synack
       message.gsub(/[^0-9A-z\.\-\']/, '_')
     end
 
-    def send(message)
+    def say(message)
       puts message
       system "/Applications/terminal-notifier.app/Contents/MacOS/terminal-notifier --message \"#{sanitize(message)}\""
     end
