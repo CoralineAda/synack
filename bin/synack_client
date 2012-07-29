@@ -9,7 +9,7 @@ but you didn't specify a URI.
 
 Try this instead:
 
-    synack_client 127.0.0.1:131313
+    synack_client 127.0.0.1:11113
 
 You'll probably have better luck that way.
 }
@@ -22,10 +22,12 @@ end
 host, port = ARGV.first.split(/:/)
 
 begin
-  client = Synack::Client.new host: host, port: port
+  client = Synack::Client.new host: host, port: (port || 11113)
 
   while true
+    print "~> "
     _input = STDIN.gets.chomp
+    exit if _input == '/quit'
     client.send _input
   end
 rescue DRb::DRbConnError => e

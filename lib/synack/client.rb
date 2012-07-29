@@ -7,10 +7,12 @@ module Synack
 
     DEFAULT_OPTIONS = {
       host: '0.0.0.0',
-      port: '131313'
+      port: 11113
     }
     
     attr_reader :host, :port, :socket
+    
+    # Instance methods =============================================================================
     
     def initialize(options = {})
       options = DEFAULT_OPTIONS.merge(options)
