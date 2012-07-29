@@ -9,7 +9,7 @@ properly.
 
 To start synack:
 
-    synack --start
+    synack -s
 
 To send a message to your local Notification Center:
 
