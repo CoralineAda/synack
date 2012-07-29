@@ -9,17 +9,17 @@ properly.
 
 To start synack:
 
-  synack --start
+    synack --start
 
 To send a message to your local Notification Center:
 
-  synack "Watson, come here, I need you."
+    synack "Watson, come here, I need you."
 
 You can send messages to remote machines by specifying a host and port in the client:
 
-  synack -h my_remote_machine "I'm here, what did you want?"
+    synack -h my_remote_machine "I'm here, what did you want?"
 
 You can even use UNIX pipes to send messages (first line of input only, for now):
 
-  echo 'Foo to you, sir.' | synack
+    echo 'Foo to you, sir.' | synack
 
