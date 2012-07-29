@@ -18,7 +18,7 @@ module Synack
       @host = options[:host]
       @port = options[:port]
 
-      @socket = DrbObject.new(nil, "druby://#{@host}:#{@port}")
+      @socket = DRbObject.new(nil, "druby://#{@host}:#{@port}")
     end
     
     def send(message)

@@ -14,13 +14,20 @@ Try this instead:
 You'll probably have better luck that way.
 }
 
-puts USAGE and exit if ARGV.empty?
+if ARGV.empty?
+  puts USAGE
+  exit
+end
 
 host, port = ARGV.first.split(/:/)
 
-client = Synack::Client.new host: host, port: port
+begin
+  client = Synack::Client.new host: host, port: port
 
-while true
-  _input = STDIN.gets.chomp
-  client.send _input
+  while true
+    _input = STDIN.gets.chomp
+    client.send _input
+  end
+rescue DRb::DRbConnError => e
+  puts "Some kind of connection error occurred: #{e}"
 end
