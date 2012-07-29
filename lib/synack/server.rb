@@ -19,7 +19,7 @@ module Synack
       @host = options[:host]
       @port = options[:port].to_i
       @@server = Synack::Server.new
-      puts "READY"
+      puts "Synack Server Running. Fire at will."
       ::DRb.start_service("druby://#{@host}:#{@port}", @@server)
       ::DRb.thread.join
     end
@@ -31,7 +31,7 @@ module Synack
     # Instance methods =============================================================================
 
     def sanitize(message)
-      message.gsub(/[^0-9A-z\.\-\']/, '_')
+      message.gsub(/[^0-9A-z\.\-\' ]/, '_')
     end
 
     def say(message)
