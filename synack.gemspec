@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "synack"
-  s.version = "1.0.0"
+  s.version = "1.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Corey Ehmke", "Max Thom Stahl"]
@@ -33,7 +33,8 @@ Gem::Specification.new do |s|
     "bin/synack_server",
     "lib/synack.rb",
     "lib/synack/client.rb",
-    "lib/synack/server.rb"
+    "lib/synack/server.rb",
+    "synack.gemspec"
   ]
   s.homepage = "http://github.com/Bantik/synack"
   s.licenses = ["MIT"]
