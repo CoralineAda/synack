@@ -9,11 +9,11 @@ module Synack
       host: '0.0.0.0',
       port: 11113
     }
-    
+
     attr_reader :host, :port, :socket
-    
+
     # Instance methods =============================================================================
-    
+
     def initialize(options = {})
       options = DEFAULT_OPTIONS.merge(options)
 
@@ -22,9 +22,9 @@ module Synack
 
       @socket = DRbObject.new(nil, "druby://#{@host}:#{@port}")
     end
-    
+
     def say(message)
-      @socket.send(message)
+      @socket.say(message)
     end
   end
 end

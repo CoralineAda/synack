@@ -36,7 +36,7 @@ module Synack
 
     def say(message)
       puts message
-      system "/Applications/terminal-notifier.app/Contents/MacOS/terminal-notifier --message \"#{sanitize(message)}\""
+      system "/Applications/terminal-notifier.app/Contents/MacOS/terminal-notifier -message \"#{sanitize(message)}\""
     end
 
   end
