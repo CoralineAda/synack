@@ -24,12 +24,8 @@ host, port = ARGV.first.split(/:/)
 begin
   client = Synack::Client.new host: host, port: (port || 11113)
 
-  while true
-    print "~> "
-    _input = STDIN.gets.chomp
-    exit if _input == '/quit'
-    client.say _input
-  end
+  _input = STDIN.gets.chomp
+  client.say _input
 rescue DRb::DRbConnError => e
   puts "Some kind of connection error occurred: #{e}"
 end
