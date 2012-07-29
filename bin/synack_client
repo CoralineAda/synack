@@ -3,6 +3,19 @@
 require 'synack'
 # require File.join(File.dirname(__FILE__), '..', 'lib', 'synack')
 
+USAGE = %q{
+Hi! It looks like you're trying to connect to a Synack server, which is great,
+but you didn't specify a URI.
+
+Try this instead:
+
+    synack_client 127.0.0.1:131313
+
+You'll probably have better luck that way.
+}
+
+puts USAGE and exit if ARGV.empty?
+
 host, port = ARGV.first.split(/:/)
 
 client = Synack::Client.new host: host, port: port

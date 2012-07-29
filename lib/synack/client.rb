@@ -1,3 +1,6 @@
+require 'drb'
+require 'socket'
+
 module Synack
 
   class Client

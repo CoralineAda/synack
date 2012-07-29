@@ -1,7 +1,5 @@
-require 'drb'
-require 'socket'
-require 'client'
-require 'server'
+require 'synack/client'
+require 'synack/server'
 
 module Synack
 end
