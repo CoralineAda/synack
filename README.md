@@ -17,5 +17,5 @@ To send a message to your local Notification Center:
 
 You can send messages to remote machines by specifying a host and port in the client:
 
-  synack -h my_remote_machine -p 11113 "I'm here, what did you want?"
+  synack -h my_remote_machine "I'm here, what did you want?"
 
