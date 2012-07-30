@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "synack"
-  s.version = "1.0.1"
+  s.version = "1.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Corey Ehmke", "Max Thom Stahl"]
-  s.date = "2012-07-29"
+  s.date = "2012-07-30"
   s.description = "A Ruby server for terminal-notifier"
   s.email = "corey@idolhands.com"
   s.executables = ["synack", "synack_client", "synack_server"]
