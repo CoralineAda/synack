@@ -31,7 +31,7 @@ module Synack
     # Instance methods =============================================================================
 
     def sanitize(message)
-      message.to_s.gsub(/[^0-9A-z\.\-\' ]/, '_')
+      message && message.gsub(/[^0-9A-z\.\-\' ]/, '_')
     end
 
     def say(message)

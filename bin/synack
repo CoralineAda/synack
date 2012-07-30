@@ -1,19 +1,22 @@
 #!/usr/bin/env ruby -wKU
 
-require 'getopt/long'
+require 'optparse'
 require 'synack'
 
-options = Getopt::Long.getopts(
-  ["--message", "-m", Getopt::REQUIRED],
-  ["--server", "-s", Getopt::OPTIONAL],
-  ["--host", "-h", Getopt::OPTIONAL],
-  ["--port", "-p", Getopt::OPTIONAL]
-)
+config = {}
 
-@host = options['host'] || 'localhost'
-@port = options['port'] || 11113
+options = OptionParser.new do |opt|
+  opt.on('-s') { config[:server] = true }
+  opt.on('-h HOST') { |host| config[:host] = host }
+  opt.on('-p PORT') { |port| config[:port] = port }
+end
 
-if options["server"]
+options.parse!
+
+@host = config[:host] || 'localhost'
+@port = config[:port] || 11113
+
+if config[:server]
   Synack::Server.start(
     host: @host,
     port: @port
@@ -25,7 +28,7 @@ else
       port: @port
     )
 
-    _input = options['message']
+    _input = ARGV[0]
     client.say _input
   rescue DRb::DRbConnError => e
     puts "Some kind of connection error occurred: #{e}"
