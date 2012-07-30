@@ -4,9 +4,10 @@ require 'getopt/long'
 require 'synack'
 
 options = Getopt::Long.getopts(
-  ["--server", "-s"],
-  ["--host", "-h"],
-  ["--port", "-p"]
+  ["--message", "-m", Getopt::REQUIRED],
+  ["--server", "-s", Getopt::OPTIONAL],
+  ["--host", "-h", Getopt::OPTIONAL],
+  ["--port", "-p", Getopt::OPTIONAL]
 )
 
 @host = options['host'] || 'localhost'
@@ -14,17 +15,17 @@ options = Getopt::Long.getopts(
 
 if options["server"]
   Synack::Server.start(
-    host: @host, 
+    host: @host,
     port: @port
   )
 else
   begin
     client = Synack::Client.new(
-      host: @host, 
+      host: @host,
       port: @port
     )
 
-    _input = STDIN.gets.chomp
+    _input = options['message']
     client.say _input
   rescue DRb::DRbConnError => e
     puts "Some kind of connection error occurred: #{e}"
