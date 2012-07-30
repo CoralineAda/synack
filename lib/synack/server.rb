@@ -19,7 +19,7 @@ module Synack
       @host = options[:host]
       @port = options[:port].to_i
       @@server = Synack::Server.new
-      puts "Synack Server Running. Fire at will."
+      puts "Synack server running. Fire at will."
       ::DRb.start_service("druby://#{@host}:#{@port}", @@server)
       ::DRb.thread.join
     end

@@ -6,7 +6,7 @@ module Synack
   class Client
 
     DEFAULT_OPTIONS = {
-      host: '0.0.0.0',
+      host: 'localhost',
       port: 11113
     }
 
