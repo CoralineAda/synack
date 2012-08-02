@@ -7,12 +7,10 @@ module Synack
 
     DEFAULT_OPTIONS = {
       host: 'localhost',
-      port: 11113
+      port: 11113,
     }
 
     attr_reader :host, :port, :socket
-
-    # Class methods ================================================================================
 
     def self.start(options={})
       options = DEFAULT_OPTIONS.merge(options)
@@ -28,7 +26,15 @@ module Synack
       ::DRb.stop_service
     end
 
-    # Instance methods =============================================================================
+    def binary
+      binary = '/Applications/terminal-notifier.app/Contents/MacOS/terminal-notifier'
+      unless File.exists? binary
+        binary = `which "terminal-notifier"`
+        binary.chomp!
+        raise "terminal-notifier could not be found in path" unless $? == 0
+      end
+      binary
+    end
 
     def sanitize(message)
       message && message.gsub(/[^0-9A-z\.\-\'\, ]/, '_')
@@ -36,7 +42,8 @@ module Synack
 
     def say(message)
       puts message
-      system "/Applications/terminal-notifier.app/Contents/MacOS/terminal-notifier -message \"#{sanitize(message)}\""
+      STDERR.puts command = "#{self.binary} -message \"#{sanitize(message)}\""
+      system command
     end
 
   end

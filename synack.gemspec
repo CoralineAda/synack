@@ -68,5 +68,6 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<shoulda>, [">= 0"])
     s.add_dependency(%q<simplecov>, [">= 0"])
   end
+  s.add_dependency "terminal-notifier"
 end
 
