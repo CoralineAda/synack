@@ -1,5 +1,6 @@
 require 'drb'
 require 'socket'
+require 'open3'
 
 module Synack
 
@@ -35,8 +36,14 @@ module Synack
     end
 
     def say(message)
-      puts message
-      system "/Applications/terminal-notifier.app/Contents/MacOS/terminal-notifier -message \"#{sanitize(message)}\""
+      terminal_notifier_path, succeeded = Open3.capture2('which terminal-notifier')
+      if succeeded.success?
+        puts message
+        puts "#{terminal_notifier_path.chomp} -message \"#{sanitize(message)}\""
+        system "#{terminal_notifier_path.chomp} -message \"#{sanitize(message)}\""
+      else
+        puts "You don't have terminal-notifier installed, please install it."
+      end
     end
 
   end
