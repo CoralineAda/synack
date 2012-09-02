@@ -1,5 +1,6 @@
 require 'drb'
 require 'socket'
+require 'open3'
 
 module Synack
 
@@ -35,11 +36,11 @@ module Synack
     end
 
     def say(message)
-      
-      terminal_notifier_path = `which terminal-notifier`
-      unless terminal_notifier_path == 'terminal-notifier not found'
+      terminal_notifier_path, succeeded = Open3.capture2('which terminal-notifier')
+      if succeeded.success?
         puts message
-        system "#{terminal_notifier_path} -message \"#{sanitize(message)}\""
+        puts "#{terminal_notifier_path.chomp} -message \"#{sanitize(message)}\""
+        system "#{terminal_notifier_path.chomp} -message \"#{sanitize(message)}\""
       else
         puts "You don't have terminal-notifier installed, please install it."
       end
