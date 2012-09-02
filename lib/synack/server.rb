@@ -35,8 +35,14 @@ module Synack
     end
 
     def say(message)
-      puts message
-      system "/Applications/terminal-notifier.app/Contents/MacOS/terminal-notifier -message \"#{sanitize(message)}\""
+      
+      terminal_notifier_path = `which terminal-notifier`
+      unless terminal_notifier_path == 'terminal-notifier not found'
+        puts message
+        system "#{terminal_notifier_path} -message \"#{sanitize(message)}\""
+      else
+        puts "You don't have terminal-notifier installed, please install it."
+      end
     end
 
   end
