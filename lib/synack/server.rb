@@ -6,8 +6,8 @@ module Synack
   class Server
 
     DEFAULT_OPTIONS = {
-      host: 'localhost',
-      port: 11113
+      :host => 'localhost',
+      :port => 11113
     }
 
     attr_reader :host, :port, :socket
@@ -31,7 +31,7 @@ module Synack
     # Instance methods =============================================================================
 
     def sanitize(message)
-      message && message.gsub(/[^0-9A-z\.\-\'\, ]/, '_')
+      message && message.gsub(/[^0-9A-z\.\-\'\, ]/, '_').gsub(/^-*/, '_')
     end
 
     def say(message)
