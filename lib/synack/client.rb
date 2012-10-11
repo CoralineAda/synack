@@ -6,8 +6,8 @@ module Synack
   class Client
 
     DEFAULT_OPTIONS = {
-      host: 'localhost',
-      port: 11113
+      :host => 'localhost',
+      :port => 11113
     }
 
     attr_reader :host, :port, :socket

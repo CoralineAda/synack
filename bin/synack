@@ -18,14 +18,14 @@ options.parse!
 
 if config[:server]
   Synack::Server.start(
-    host: @host,
-    port: @port
+    :host => @host,
+    :port => @port
   )
 else
   begin
     client = Synack::Client.new(
-      host: @host,
-      port: @port
+      :host => @host,
+      :port => @port
     )
 
     _input = ARGV[0] ? ARGV[0] : STDIN.read
